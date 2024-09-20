@@ -133,7 +133,7 @@ def build_lstm_model(input_shape):
     return model
 
 
-def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days, num_predictions=5):
+def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days, num_predictions=2):
     all_predictions = []
 
     for _ in range(num_predictions):
@@ -173,12 +173,6 @@ def main():
 
     # Aggiungi l'avviso per la versione beta e disclaimer
     st.warning("⚠️ **Versione Beta**: Questo strumento è in fase sperimentale. Le previsioni potrebbero essere imprecise e non devono essere considerate come consigli finanziari.")
-
-    # Aggiungi il disclaimer anche in fondo, per essere sicuri che venga letto
-    st.markdown("""
-    **Disclaimer**: Le previsioni fornite da questo strumento non rappresentano consigli finanziari. 
-    Si raccomanda di consultare professionisti qualificati prima di prendere decisioni di investimento.
-    """)
     
     visualdata = False
     # Input per il ticker
@@ -241,7 +235,7 @@ def main():
             # Addestra il modello LSTM
             X = X.reshape((X.shape[0], X.shape[1], X.shape[2]))
             model = build_lstm_model((X.shape[1], X.shape[2]))
-            model.fit(X, y, epochs=10, batch_size=32, verbose=1)
+            model.fit(X, y, epochs=20, batch_size=32, verbose=1)
 
             # Previsione futura
             future_end_date = datetime(2030, 1, 1)
