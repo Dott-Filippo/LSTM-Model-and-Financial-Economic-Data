@@ -133,29 +133,22 @@ def build_lstm_model(input_shape):
     return model
 
 
-def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days, num_predictions=2):
-    all_predictions = []
+def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days):
+    last_data = np.hstack((scaled_price[-time_step:], scaled_economic[-time_step:], scaled_phase[-time_step:]))
+    future_predictions = []
 
-    for _ in range(num_predictions):
-        last_data = np.hstack((scaled_price[-time_step:], scaled_economic[-time_step:], scaled_phase[-time_step:]))
-        future_predictions = []
+    for _ in range(future_days):
+        last_data_reshaped = last_data.reshape((1, time_step, last_data.shape[1]))
+        prediction = model.predict(last_data_reshaped)
+        future_predictions.append(prediction[0, 0])
 
-        for _ in range(future_days):
-            last_data_reshaped = last_data.reshape((1, time_step, last_data.shape[1]))
-            prediction = model.predict(last_data_reshaped)
-            future_predictions.append(prediction[0, 0])
+        new_data = np.roll(last_data, shift=-1, axis=0)
+        new_data[-1, 0] = prediction[0, 0]
 
-            new_data = np.roll(last_data, shift=-1, axis=0)
-            new_data[-1, 0] = prediction[0, 0]
+        last_data = new_data
 
-            last_data = new_data
+    return future_predictions
 
-        all_predictions.append(future_predictions)
-
-    # Media delle previsioni
-    averaged_predictions = np.mean(all_predictions, axis=0)
-
-    return averaged_predictions
 
 
 
