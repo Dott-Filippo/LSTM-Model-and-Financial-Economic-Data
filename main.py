@@ -1,3 +1,4 @@
+
 import random
 import numpy as np
 import pandas as pd
@@ -11,6 +12,7 @@ import pandas_datareader.data as pdr
 import streamlit as st
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from tensorflow.keras.layers import Dropout
+from PIL import Image 
 import plotly.graph_objs as go  
 
 # Imposta il seed per NumPy
