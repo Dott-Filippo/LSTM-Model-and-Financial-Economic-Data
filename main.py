@@ -11,6 +11,15 @@ import streamlit as st
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import plotly.graph_objs as go  
 
+# Imposta il seed per NumPy
+np.random.seed(42)
+
+# Imposta il seed per Python
+random.seed(42)
+
+# Imposta il seed per TensorFlow
+tf.random.set_seed(42)
+
 def analizza_fasi(ticker):
     azienda = yf.Ticker(ticker)
     flussi_cassa = azienda.cashflow.T
