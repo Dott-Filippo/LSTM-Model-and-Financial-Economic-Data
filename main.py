@@ -181,7 +181,7 @@ def main():
     visualdata = False
     # Input per il ticker
     ticker = st.text_input("Inserisci il ticker dell'azienda:", value="AAPL")
-    if st.checkbox("Mostrai dati"): 
+    if st.checkbox("Mostra i dati"): 
         visualdata = True
     if st.button("Analizza"):
         with st.spinner("Elaborazione in corso... Attendere, potrebbero volerci alcuni minuti"):
