@@ -164,7 +164,7 @@ def get_full_financial_data(ticker):
 def main():
     
     # Aggiungi il logo all'inizio dell'app
-     with st.beta_container():
+    with st.beta_container():
         st.image("images/Logo.png", width=350)
          
     st.title("Firm Life Cycle and LSTM Model: a predictive analysis")
@@ -290,7 +290,7 @@ def main():
                 st.write("Non è stato possibile determinare la fase attuale dell'azienda.")
 
     with st.beta_container():
-         st.image("images/Logo_Università_del_Piemonte_Orientale.png", width=250)
+        st.image("images/Logo_Università_del_Piemonte_Orientale.png", width=250)
     # Aggiungi un box di testo
     st.subheader("Informazioni sul progetto")
     st.write("Questo applicativo fa parte di un progetto di ricerca, facente parte di una tesi di laurea magistrale dell'Università degli studi del Piemonte Orientale")         
