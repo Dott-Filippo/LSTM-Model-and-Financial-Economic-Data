@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 import pandas_datareader.data as pdr
 import streamlit as st
 from sklearn.metrics import mean_squared_error, mean_absolute_error
+from tensorflow.keras.layers import Dropout
 import plotly.graph_objs as go  
 
 # Imposta il seed per NumPy
@@ -118,29 +119,43 @@ def create_lstm_dataset(price_data, economic_data, phase_data, time_step=60):
         y.append(price_data[i + time_step, 0])
     return np.array(X), np.array(y)
 
+
+
 def build_lstm_model(input_shape):
     model = Sequential()
     model.add(LSTM(units=50, return_sequences=True, input_shape=input_shape))
+    model.add(Dropout(0.2))  # Dropout per prevenire overfitting
     model.add(LSTM(units=50))
+    model.add(Dropout(0.2))  # Dropout per prevenire overfitting
     model.add(Dense(1))
     model.compile(optimizer='adam', loss='mean_squared_error')
     return model
 
-def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days):
-    last_data = np.hstack((scaled_price[-time_step:], scaled_economic[-time_step:], scaled_phase[-time_step:]))
-    future_predictions = []
 
-    for _ in range(future_days):
-        last_data_reshaped = last_data.reshape((1, time_step, last_data.shape[1]))
-        prediction = model.predict(last_data_reshaped)
-        future_predictions.append(prediction[0, 0])
+def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days, num_predictions=5):
+    all_predictions = []
 
-        new_data = np.roll(last_data, shift=-1, axis=0)
-        new_data[-1, 0] = prediction[0, 0]
+    for _ in range(num_predictions):
+        last_data = np.hstack((scaled_price[-time_step:], scaled_economic[-time_step:], scaled_phase[-time_step:]))
+        future_predictions = []
 
-        last_data = new_data
+        for _ in range(future_days):
+            last_data_reshaped = last_data.reshape((1, time_step, last_data.shape[1]))
+            prediction = model.predict(last_data_reshaped)
+            future_predictions.append(prediction[0, 0])
 
-    return future_predictions
+            new_data = np.roll(last_data, shift=-1, axis=0)
+            new_data[-1, 0] = prediction[0, 0]
+
+            last_data = new_data
+
+        all_predictions.append(future_predictions)
+
+    # Media delle previsioni
+    averaged_predictions = np.mean(all_predictions, axis=0)
+
+    return averaged_predictions
+
 
 
 
@@ -217,13 +232,13 @@ def main():
             # Previsione futura
             future_end_date = datetime(2030, 1, 1)
             future_days = (future_end_date - combined_data.index[-1]).days
-            future_predictions = predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days)
+            averaged_predictions = predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days)
 
             future_dates = [combined_data.index[-1] + timedelta(days=i) for i in range(1, future_days + 1)]
-            future_predictions = scaler_price.inverse_transform(np.array(future_predictions).reshape(-1, 1))
+            averaged_predictions = scaler_price.inverse_transform(np.array(averaged_predictions).reshape(-1, 1))
 
             # Combina i prezzi storici e i prezzi predetti in un'unica serie
-            all_prices = np.concatenate((combined_data['Close'].values, future_predictions.flatten()))
+            all_prices = np.concatenate((combined_data['Close'].values, averaged_predictions.flatten()))
             all_dates = np.concatenate((combined_data.index.values, future_dates))
 
             # Grafico interattivo con Plotly
