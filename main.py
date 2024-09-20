@@ -164,7 +164,17 @@ def get_full_financial_data(ticker):
 
 
 def main():
-   
+    st.markdown(
+    """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-color: #FFFFFF; /* Colore di sfondo chiaro */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+
     # Aggiungi il logo centrato all'inizio dell'app
     logo = Image.open("Logo.png")  # Carica l'immagine
     # Crea tre colonne e centra il logo nella colonna centrale
