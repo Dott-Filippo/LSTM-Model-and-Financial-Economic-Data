@@ -306,7 +306,7 @@ def main():
         logo2 = Image.open("Logo2.png")  # Carica il secondo logo
         col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
         with col2:  # Colonna centrale
-            st.image(logo2, width=150, use_column_width=False)  # Mostra il secondo logo
+            st.image(logo2, width=250, use_column_width=False)  # Mostra il secondo logo
 
       
 if __name__ == "__main__":
