@@ -164,7 +164,7 @@ def get_full_financial_data(ticker):
 def main():
     
     # Aggiungi il logo all'inizio dell'app
-    st.image("logo.png", width=200) 
+    st.image("Logo.png", width=200) 
     
     st.title("Firm Life Cycle and LSTM Model: a predictive analysis")
 
