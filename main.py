@@ -168,14 +168,24 @@ def get_full_financial_data(ticker):
 
 
 def main():
-    st.title("Previsione dei Prezzi delle Azioni con LSTM")
+    st.title("Firm Life Cycle and LSTM Model: a predictive analysis")
+
+    # Aggiungi l'avviso per la versione beta e disclaimer
+    st.warning("⚠️ **Versione Beta**: Questo strumento è in fase sperimentale. Le previsioni potrebbero essere imprecise e non devono essere considerate come consigli finanziari.")
+
+    # Aggiungi il disclaimer anche in fondo, per essere sicuri che venga letto
+    st.markdown("""
+    **Disclaimer**: Le previsioni fornite da questo strumento non rappresentano consigli finanziari. 
+    Si raccomanda di consultare professionisti qualificati prima di prendere decisioni di investimento.
+    """)
+    
     visualdata = False
     # Input per il ticker
     ticker = st.text_input("Inserisci il ticker dell'azienda:", value="AAPL")
     if st.checkbox("Mostrai dati"): 
         visualdata = True
     if st.button("Analizza"):
-        with st.spinner("Elaborazione in corso..."):
+        with st.spinner("Elaborazione in corso... Attendere, potrebbero volerci alcuni minuti"):
             # Esegui le funzioni esistenti
             phase_data = analizza_fasi(ticker)
             price_data = get_financial_data(ticker)
@@ -189,12 +199,15 @@ def main():
             if visualdata == True:
                st.subheader("Dati storici dei prezzi:")
                st.write(price_data.head())
+               st.write(price_data.tail())
 
                st.subheader("Dati economici:")
                st.write(economic_data.head())
+               st.write(economic_data.tail())
 
                st.subheader("Dati delle fasi:")
                st.write(phase_data.head())
+               st.write(phase_data.tail())
 
             # Combina i dati
             combined_data = price_data.join(economic_data, how='outer')
