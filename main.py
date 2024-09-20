@@ -170,7 +170,7 @@ def main():
     # Crea tre colonne e centra il logo nella colonna centrale
     col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
     with col2:  # Colonna centrale
-        st.image(logo, width=250, caption='Logo Iniziale', use_column_width=False)  # Mostra l'immagine
+        st.image(logo, width=250, use_column_width=False)  # Mostra l'immagine
 
     
     st.title("Firm Life Cycle and LSTM Model: a predictive analysis")
@@ -303,10 +303,10 @@ def main():
         st.write("Questo applicativo fa parte di un progetto di ricerca, facente parte di una tesi di laurea magistrale dell'Università degli studi del Piemonte Orientale")
        
         # Aggiungi il secondo logo centrato
-        logo2 = Image.open("Logo_Università_del_Piemonte_Orientale.png")  # Carica il secondo logo
+        logo2 = Image.open("Logo2.png")  # Carica il secondo logo
         col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
         with col2:  # Colonna centrale
-            st.image(logo2, width=150, caption='Secondo Logo', use_column_width=False)  # Mostra il secondo logo
+            st.image(logo2, width=150, use_column_width=False)  # Mostra il secondo logo
 
       
 if __name__ == "__main__":
