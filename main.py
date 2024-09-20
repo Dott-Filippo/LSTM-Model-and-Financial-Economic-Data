@@ -166,7 +166,7 @@ def get_full_financial_data(ticker):
 def main():
    
     # Aggiungi il logo centrato all'inizio dell'app
-    logo = Image.open("images/Logo.png")  # Carica l'immagine
+    logo = Image.open("Logo.png")  # Carica l'immagine
     # Crea tre colonne e centra il logo nella colonna centrale
     col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
     with col2:  # Colonna centrale
