@@ -162,10 +162,15 @@ def get_full_financial_data(ticker):
 
 
 def main():
-    
-    # Aggiungi il logo all'inizio dell'app
-    with st.beta_container():
-        st.image("images/Logo.png", width=350)
+    # Aggiungi il logo centrato all'inizio dell'app
+    st.markdown(
+        """
+        <div style='text-align: center;'>
+            <img src="images/Logo.png" width="350">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
          
     st.title("Firm Life Cycle and LSTM Model: a predictive analysis")
 
@@ -288,9 +293,18 @@ def main():
                 st.write(f"L'azienda si trova nella fase **{current_phase_num_print}** ({current_phase_desc}) del suo ciclo di vita. {current_phase_desc_esplit}")
             else:
                 st.write("Non è stato possibile determinare la fase attuale dell'azienda.")
+    # Aggiungi un container per il secondo logo e il box di testo
+    with st.container():
+        # Aggiungi il secondo logo centrato
+        st.markdown(
+            """
+            <div style='text-align: center;'>
+                <img src="images/images/Logo_Università_del_Piemonte_Orientale.png" width="250">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-    with st.beta_container():
-        st.image("images/Logo_Università_del_Piemonte_Orientale.png", width=250)
     # Aggiungi un box di testo
     st.subheader("Informazioni sul progetto")
     st.write("Questo applicativo fa parte di un progetto di ricerca, facente parte di una tesi di laurea magistrale dell'Università degli studi del Piemonte Orientale")         
