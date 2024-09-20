@@ -164,35 +164,7 @@ def get_full_financial_data(ticker):
 
 
 def main():
-    # Imposta lo sfondo bianco per tutta la pagina
-    st.markdown(
-        """
-        <style>
-        /* Imposta lo sfondo dell'intera app su bianco */
-        [data-testid="stAppViewContainer"] {
-            background-color: #FFFFFF;
-        }
-
-        /* Rimuove i padding e margini */
-        [data-testid="stAppViewContainer"] .main {
-            padding-top: 20px; /* Spazio extra in alto per evitare sovrapposizioni */
-        }
-
-        /* Colore del testo */
-        .stText, .stMarkdown, .stHeader, .stSubheader, .stCaption {
-            color: #000000; /* Testo in nero per contrasto sul bianco */
-        }
-
-        /* Centra il contenuto */
-        [data-testid="stVerticalBlock"] {
-            align-items: center;
-        }
-
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
+    
     # Aggiungi il logo centrato all'inizio dell'app
     logo = Image.open("Logo.png")  # Carica l'immagine
     # Crea tre colonne e centra il logo nella colonna centrale
