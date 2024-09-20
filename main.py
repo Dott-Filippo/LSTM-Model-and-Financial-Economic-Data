@@ -166,7 +166,7 @@ def main():
     st.markdown(
         """
         <div style='text-align: center;'>
-            <img src="images/Logo.png" width="350">
+            <img src="Logo.png" width="350">
         </div>
         """,
         unsafe_allow_html=True
@@ -299,7 +299,7 @@ def main():
         st.markdown(
             """
             <div style='text-align: center;'>
-                <img src="images/images/Logo_Università_del_Piemonte_Orientale.png" width="250">
+                <img src="Logo_Università_del_Piemonte_Orientale.png" width="250">
             </div>
             """,
             unsafe_allow_html=True
