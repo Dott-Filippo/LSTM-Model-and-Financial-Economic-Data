@@ -253,7 +253,7 @@ def main():
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=combined_data.index, y=combined_data['Close'], mode='lines', name='Dati Reali', line=dict(color='blue')))
             fig.add_trace(go.Scatter(x= all_dates, y=all_prices, mode='lines', name='Previsioni LSTM', line=dict(color='green')))
-            fig.add_trace(go.Scatter(x=future_dates, y=future_predictions, mode='lines', name='Previsioni LSTM', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=future_dates, y=averaged_predictions, mode='lines', name='Previsioni LSTM', line=dict(color='red')))
             fig.update_layout(title=f'Previsione del Prezzo delle Azioni per {ticker} con LSTM',
                               xaxis_title='Data',
                               yaxis_title='Prezzo di Chiusura',
