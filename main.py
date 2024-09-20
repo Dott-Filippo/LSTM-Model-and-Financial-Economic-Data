@@ -294,7 +294,11 @@ def main():
                 st.write(f"L'azienda si trova nella fase **{current_phase_num_print}** ({current_phase_desc}) del suo ciclo di vita. {current_phase_desc_esplit}")
             else:
                 st.write("Non è stato possibile determinare la fase attuale dell'azienda.")
-                
+    st.write("")  # Riga vuota
+    st.write("")  # Riga vuota        
+    st.write("")  # Riga vuota        
+    st.write("")  # Riga vuota        
+    st.write("")  # Riga vuota        
     # Aggiungi un container per il secondo logo e il box di testo
     with st.container():
 
