@@ -304,7 +304,7 @@ def main():
 
         # Aggiungi un box di testo
         st.subheader("Informazioni sul progetto")
-        st.write("Questo applicativo è il frutto di un'approfondita ricerca condotta nell'ambito della tesi di laurea magistrale da uno studente dell'Università del Piemonte Orientale.")
+        st.write("Questo applicativo è il frutto di un'approfondita ricerca condotta nell'ambito della tesi di laurea magistrale da uno studente dell'Università degli studi del Piemonte Orientale.")
        
         # Aggiungi il secondo logo centrato
         logo2 = Image.open("Logo2.png")  # Carica il secondo logo
