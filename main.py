@@ -228,25 +228,24 @@ def main():
             # Addestra il modello LSTM
             X = X.reshape((X.shape[0], X.shape[1], X.shape[2]))
             model = build_lstm_model((X.shape[1], X.shape[2]))
-            model.fit(X, y, epochs=20, batch_size=32, verbose=1)
+            model.fit(X, y, epochs=10, batch_size=32, verbose=1)
 
             # Previsione futura
             future_end_date = datetime(2030, 1, 1)
             future_days = (future_end_date - combined_data.index[-1]).days
-            averaged_predictions = predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days)
+            future_predictions = predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step, future_days)
 
             future_dates = [combined_data.index[-1] + timedelta(days=i) for i in range(1, future_days + 1)]
-            averaged_predictions = scaler_price.inverse_transform(np.array(averaged_predictions).reshape(-1, 1))
+            future_predictions = scaler_price.inverse_transform(np.array(future_predictions).reshape(-1, 1))
 
             # Combina i prezzi storici e i prezzi predetti in un'unica serie
-            all_prices = np.concatenate((combined_data['Close'].values, averaged_predictions.flatten()))
+            all_prices = np.concatenate((combined_data['Close'].values, future_predictions.flatten()))
             all_dates = np.concatenate((combined_data.index.values, future_dates))
 
             # Grafico interattivo con Plotly
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=combined_data.index, y=combined_data['Close'], mode='lines', name='Dati Reali', line=dict(color='blue')))
-            fig.add_trace(go.Scatter(x= all_dates, y=all_prices, mode='lines', name='Previsioni LSTM', line=dict(color='green')))
-            fig.add_trace(go.Scatter(x=future_dates, y=averaged_predictions, mode='lines', name='Previsioni LSTM', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x= all_dates, y=all_prices, mode='lines', name='Previsioni LSTM', line=dict(color='red')))
             fig.update_layout(title=f'Previsione del Prezzo delle Azioni per {ticker} con LSTM',
                               xaxis_title='Data',
                               yaxis_title='Prezzo di Chiusura',
