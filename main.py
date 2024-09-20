@@ -246,11 +246,11 @@ def main():
             current_phase_num_print_esplit = phase_data['fase'].iloc[-1] if not phase_data.empty else None
             phase_description_esplit = {
                 0: "N/A",
-                1: "Siamo nella fase di introduzione di conseguenza",
-                2: "Siamo nella fase di Crescita di conseguenza",
-                3: "Siamo nella fase di Maturità di conseguenza",
-                4: "Siamo nella fase di Shake-out di conseguenza",
-                5: "Siamo nella fase di Declino di conseguenza"
+                1: "In questa fase, l'azienda è appena entrata nel mercato. Il prodotto o servizio è nuovo, l'azienda sta cercando di costruire una base di clienti e aumentare la consapevolezza del marchio.",
+                2: "In questa fase, l'azienda sta crescendo rapidamente. La domanda per i prodotti o servizi è in aumento, e la base clienti si sta espandendo rapidamente.",
+                3: "In questa fase, l'azienda ha raggiunto una posizione consolidata nel mercato. La crescita dei ricavi rallenta, ma i margini di profitto sono solidi.",
+                4: "In questa fase, l'azienda potrebbe affrontare difficoltà nel mercato a causa di una riduzione della domanda o di cambiamenti nel settore. La concorrenza si intensifica e alcune aziende potrebbero uscire dal mercato.",
+                5: "In questa fase, l'azienda affronta un forte calo della domanda dei suoi prodotti o servizi. Il settore potrebbe essere diventato obsoleto o la concorrenza ha preso il sopravvento."
             }
             current_phase_desc_esplit = phase_description_esplit.get(current_phase_num_print_esplit, "Sconosciuta")
 
