@@ -162,16 +162,15 @@ def get_full_financial_data(ticker):
 
 
 def main():
+   
     # Aggiungi il logo centrato all'inizio dell'app
-    st.markdown(
-        """
-        <div style='text-align: center;'>
-            <img src="Logo.png" width="350">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-         
+    logo = Image.open("images/Logo.png")  # Carica l'immagine
+    # Crea tre colonne e centra il logo nella colonna centrale
+    col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
+    with col2:  # Colonna centrale
+        st.image(logo, width=250, caption='Logo Iniziale', use_column_width=False)  # Mostra l'immagine
+
+    
     st.title("Firm Life Cycle and LSTM Model: a predictive analysis")
 
     # Aggiungi l'avviso per la versione beta e disclaimer
@@ -293,20 +292,20 @@ def main():
                 st.write(f"L'azienda si trova nella fase **{current_phase_num_print}** ({current_phase_desc}) del suo ciclo di vita. {current_phase_desc_esplit}")
             else:
                 st.write("Non è stato possibile determinare la fase attuale dell'azienda.")
+                
     # Aggiungi un container per il secondo logo e il box di testo
     with st.container():
-        # Aggiungi il secondo logo centrato
-        st.markdown(
-            """
-            <div style='text-align: center;'>
-                <img src="Logo_Università_del_Piemonte_Orientale.png" width="250">
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
 
-    # Aggiungi un box di testo
-    st.subheader("Informazioni sul progetto")
-    st.write("Questo applicativo fa parte di un progetto di ricerca, facente parte di una tesi di laurea magistrale dell'Università degli studi del Piemonte Orientale")         
+        # Aggiungi un box di testo
+        st.subheader("Informazioni sul progetto")
+        st.write("Questo applicativo fa parte di un progetto di ricerca, facente parte di una tesi di laurea magistrale dell'Università degli studi del Piemonte Orientale")
+       
+        # Aggiungi il secondo logo centrato
+        logo2 = Image.open("Logo_Università_del_Piemonte_Orientale.png")  # Carica il secondo logo
+        col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
+        with col2:  # Colonna centrale
+            st.image(logo2, width=150, caption='Secondo Logo', use_column_width=False)  # Mostra il secondo logo
+
+      
 if __name__ == "__main__":
     main()
