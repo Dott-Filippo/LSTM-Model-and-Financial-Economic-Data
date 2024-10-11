@@ -268,7 +268,7 @@ def analizza_fasi_prophet(ticker):
 
 def fit_prophet_model(data_prophet, exogenous_data_prophet, lifecycle_data_prophet):
     """Addestra il modello Prophet con variabili esogene inclusa la fase del ciclo di vita."""
-    model_prophet = Prophet(yearly_seasonality=True, daily_seasonality=False,changepoint_prior_scale=0.000000000000000000001)
+    model_prophet = Prophet(yearly_seasonality=True, daily_seasonality=False,changepoint_prior_scale=0.05)
 
     for col in exogenous_data_prophet.columns:
         if col != 'ds':
@@ -419,7 +419,7 @@ def main():
             fig.add_trace(go.Scatter(x=combined_data.index, y=combined_data['Close'], mode='lines', name='Dati Storici',
                                      line=dict(color='blue')))
             if macro_trend == True:
-                fig.add_trace(go.Scatter(x=all_dates, y=forecast_prophet['yhat'], mode='lines', name='Macro Trend',
+                fig.add_trace(go.Scatter(x=all_dates, y=forecast_prophet['trend'], mode='lines', name='Macro Trend',
                                      line=dict(color='green')))
             fig.add_trace(go.Scatter(x=all_dates, y=all_prices, mode='lines', name='Previsioni', line=dict(color='red')))
 
