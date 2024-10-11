@@ -376,7 +376,7 @@ def main():
             model.fit(X, y, epochs=10, batch_size=32, verbose=1)
 
             # Previsione futura
-            future_end_date = datetime(2030, 1, 1)
+            future_end_date = datetime(2026, 1, 1)
             future_days = (future_end_date - combined_data.index[-1]).days
             future_predictions = predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step,
                                                 future_days)
@@ -384,9 +384,26 @@ def main():
             future_dates = [combined_data.index[-1] + timedelta(days=i) for i in range(1, future_days + 1)]
             future_predictions = scaler_price.inverse_transform(np.array(future_predictions).reshape(-1, 1))
 
+
+            
             # Combina i prezzi storici e i prezzi predetti in un'unica serie
             all_prices = np.concatenate((combined_data['Close'].values, future_predictions.flatten()))
             all_dates = np.concatenate((combined_data.index.values, future_dates))
+
+            #data per prophet grafico
+
+            future_end_date_prophet_plot = datetime(2030, 1, 1)
+            future_days_prophet_plot = (future_end_date_prophet_plot - combined_data.index[-1]).days
+            future_dates_prophet_plot = [combined_data.index[-1] + timedelta(days=i) for i in range(1, future_days_prophet_plot + 1)]
+
+            all_dates_prophet_plot = np.concatenate((combined_data.index.values, future_dates_prophet_plot))
+
+
+
+
+
+
+
             data_prophet = get_financial_data_prophet(ticker)
             if macro_trend == True:
 
@@ -419,7 +436,7 @@ def main():
             fig.add_trace(go.Scatter(x=combined_data.index, y=combined_data['Close'], mode='lines', name='Dati Storici',
                                      line=dict(color='blue')))
             if macro_trend == True:
-                fig.add_trace(go.Scatter(x=all_dates_prophet, y=forecast_prophet['trend'], mode='lines', name='Macro Trend',
+                fig.add_trace(go.Scatter(x=all_dates_prophet_plot, y=forecast_prophet['trend'], mode='lines', name='Macro Trend',
                                      line=dict(color='green')))
             fig.add_trace(go.Scatter(x=all_dates, y=all_prices, mode='lines', name='Previsioni', line=dict(color='red')))
 
