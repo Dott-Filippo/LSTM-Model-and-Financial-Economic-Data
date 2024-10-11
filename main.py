@@ -268,7 +268,7 @@ def analizza_fasi_prophet(ticker):
 
 def fit_prophet_model(data_prophet, exogenous_data_prophet, lifecycle_data_prophet):
     """Addestra il modello Prophet con variabili esogene inclusa la fase del ciclo di vita."""
-    model_prophet = Prophet(yearly_seasonality=True, daily_seasonality=False,changepoint_prior_scale=0.0000000000005)
+    model_prophet = Prophet(yearly_seasonality=True, daily_seasonality=False,changepoint_prior_scale=0.0000000000000000005)
 
     for col in exogenous_data_prophet.columns:
         if col != 'ds':
