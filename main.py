@@ -268,7 +268,7 @@ def analizza_fasi_prophet(ticker):
 
 def fit_prophet_model(data_prophet, exogenous_data_prophet, lifecycle_data_prophet):
     """Addestra il modello Prophet con variabili esogene inclusa la fase del ciclo di vita."""
-    model_prophet = Prophet(yearly_seasonality=True, daily_seasonality=False,changepoint_prior_scale=0.0000000000000000000001)
+    model_prophet = Prophet(yearly_seasonality=True, daily_seasonality=False,changepoint_prior_scale=0.00000000000000000000000001)
 
     for col in exogenous_data_prophet.columns:
         if col != 'ds':
@@ -490,13 +490,8 @@ def main():
         # Aggiungi un box di testo
         st.subheader("Informazioni sul progetto")
         st.write(
-            "Questo applicativo è il frutto di un'approfondita ricerca condotta nell'ambito della tesi di laurea magistrale da uno studente dell'Università degli studi del Piemonte Orientale.")
+            "Questa piattaforma è stata sviluppata in maniera indipendente come applicazione sperimentale di una tesi di laurea del corso di laurea EMI presso l'Università del Piemonte Orientale. UPO non ha sponsorizzato o partecipato ufficialmente alla sua realizzazione.")
 
-        # Aggiungi il secondo logo centrato
-        logo2 = Image.open("Logo2.png")  # Carica il secondo logo
-        col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
-        with col2:  # Colonna centrale
-            st.image(logo2, width=250, use_column_width=False)  # Mostra il secondo logo
 
 
 if __name__ == "__main__":
