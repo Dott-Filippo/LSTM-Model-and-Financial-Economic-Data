@@ -508,6 +508,7 @@ def main():
           <strong>Proprietà intellettuale di Filippo Cavanna. Tutti i diritti riservati.</strong><br>
           Questo software, compreso il codice sorgente e i contenuti ad esso associati, costituisce proprietà intellettuale di Filippo Cavanna ed è perciò protetto da copyright.
           Qualsiasi riproduzione, distribuzione, modifica o utilizzo non autorizzato è severamente vietato e può comportare azioni legali.<br>
+          Si invita l'utente a consultare la licenza d'uso per i termini completi.<br>
          </p>
          """, 
            unsafe_allow_html=True
