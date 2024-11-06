@@ -498,7 +498,7 @@ def main():
         # Riga nera divisoria
         st.markdown(
              """
-              <hr style="border:3px solid #003366;">
+              <hr style="border:2px solid #003366;">
              """, 
              unsafe_allow_html=True
         )
