@@ -492,7 +492,17 @@ def main():
         st.write(
             "Questa piattaforma è stata sviluppata in maniera indipendente come applicazione sperimentale di una tesi di laurea del corso di laurea EMI presso l'Università del Piemonte Orientale. UPO non ha sponsorizzato o partecipato ufficialmente alla sua realizzazione.")
 
-
+        st.markdown(
+            """
+          <p style='text-align: center; color: gray; font-size: 0.9em;'>
+          <strong>Proprietà intellettuale di Mario Rossi. Tutti i diritti riservati.</strong><br>
+          Questo software, compreso il codice sorgente e i contenuti associati, costituisce proprietà intellettuale di Mario Rossi ed è protetto da copyright.
+          Qualsiasi riproduzione, distribuzione, modifica o utilizzo non autorizzato è vietato e può comportare azioni legali.<br>
+          Per richieste di autorizzazione, si prega di contattare: <a href='mailto:tuoemail@example.com'>tuoemail@example.com</a>.
+         </p>
+         """, 
+           unsafe_allow_html=True
+        )
 
 if __name__ == "__main__":
     main()
