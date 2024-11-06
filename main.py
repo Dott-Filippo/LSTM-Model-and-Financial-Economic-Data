@@ -509,7 +509,7 @@ def main():
           Questo software, compreso il codice sorgente e i contenuti ad esso associati, costituisce proprietà intellettuale di Filippo Cavanna ed è perciò protetto da copyright.
           Qualsiasi riproduzione, distribuzione, modifica o utilizzo non autorizzato è severamente vietato e può comportare azioni legali.<br>
           Si invita l'utente a consultare la licenza d'uso per i termini completi.<br><br>
-    © 2024 DELFI -  © 2024 DELFI
+    © 2024 DELFI -  © 2024 Filippo Cavanna
          </p>
          """, 
            unsafe_allow_html=True
