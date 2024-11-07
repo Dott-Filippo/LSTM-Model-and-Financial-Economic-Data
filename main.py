@@ -299,9 +299,9 @@ def main():
     # Aggiungi il logo centrato all'inizio dell'app
     logo = Image.open("Delfi-2.png")  # Carica l'immagine
     # Crea tre colonne e centra il logo nella colonna centrale
-    col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
+    col1, col2, col3 = st.columns([1, 3, 1])  # Proporzioni delle colonne
     with col2:  # Colonna centrale
-        st.image(logo, width=300, use_column_width=False)  # Mostra l'immagine
+        st.image(logo, width=500, use_column_width=False)  # Mostra l'immagine
 
     st.title("Firm Life Cycle and Stock Return: a predictive analysis")
 
