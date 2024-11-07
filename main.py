@@ -298,22 +298,10 @@ def predict_future_prophet(model_prophet, data_prophet, exogenous_data_prophet, 
 def main():
     # Aggiungi il logo centrato all'inizio dell'app
     logo = Image.open("Delfi-2.png")  # Carica l'immagine
-    with st.container():
-        # Usa HTML per aggiungere margini personalizzati
-        st.markdown(
-            """
-            <div style="display: flex; justify-content: center; padding-left: 2.5%; padding-right: 2.5%;">
-                <img src="Delfi-2.png" width="300"/>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    
-    # Crea tre colonne e centra il logo nella colonna centrale
-    #col1, col2, col3 = st.columns([1, 3, 1])  # Proporzioni delle colonne
-   # with col2:  # Colonna centrale
-      #  st.image(logo, width=500, use_column_width=False)  # Mostra l'immagine
+    #Crea tre colonne e centra il logo nella colonna centrale
+    col1, col2, col3 = st.columns([1, 3, 1])  # Proporzioni delle colonne
+    with col2:  # Colonna centrale
+        st.image(logo, width=500, use_column_width=False)  # Mostra l'immagine
 
     st.title("Firm Life Cycle and Stock Return: a predictive analysis")
 
