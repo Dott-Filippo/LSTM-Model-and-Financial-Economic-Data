@@ -436,7 +436,7 @@ def main():
             fig.add_trace(go.Scatter(x=combined_data.index, y=combined_data['Close'], mode='lines', name='Dati Storici',
                                      line=dict(color='blue')))
             if macro_trend == True:
-                fig.add_trace(go.Scatter(x=all_dates_prophet_plot, y=forecast_prophet['trend'], mode='lines', name='Macro Trend',
+                fig.add_trace(go.Scatter(x=all_dates_prophet_plot, y=forecast_prophet['yhat'], mode='lines', name='Macro Trend',
                                      line=dict(color='green')))
             fig.add_trace(go.Scatter(x=all_dates, y=all_prices, mode='lines', name='Previsioni', line=dict(color='red')))
 
