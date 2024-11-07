@@ -301,7 +301,7 @@ def main():
     #Crea tre colonne e centra il logo nella colonna centrale
     col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
     with col2:  # Colonna centrale
-        st.image(logo, width=500, use_column_width=False)  # Mostra l'immagine
+        st.image(logo, width=300, use_column_width=False)  # Mostra l'immagine
 
     st.title("Firm Life Cycle and Stock Return: a predictive analysis")
 
