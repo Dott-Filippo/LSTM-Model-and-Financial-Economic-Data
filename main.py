@@ -297,7 +297,7 @@ def predict_future_prophet(model_prophet, data_prophet, exogenous_data_prophet, 
 
 def main():
     # Aggiungi il logo centrato all'inizio dell'app
-    logo = Image.open("Delfi_5.png")  # Carica l'immagine
+    logo = Image.open("Delfi_6.png")  # Carica l'immagine
     #Crea tre colonne e centra il logo nella colonna centrale
     col1, col2, col3 = st.columns([1, 2, 1])  # Proporzioni delle colonne
     with col2:  # Colonna centrale
