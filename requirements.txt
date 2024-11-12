@@ -126,5 +126,5 @@ webencodings==0.5.1
 Werkzeug==3.0.4
 wrapt==1.16.0
 yarl==1.14.0
-yfinance==0.2.22
+yfinance==0.2.24
 zipp==3.20.2
