@@ -162,13 +162,13 @@ def predict_future(model, scaled_price, scaled_economic, scaled_phase, time_step
 
 def get_full_financial_data(ticker):
     # Recupera i dati storici a partire dal 1990
-    stock_data_full = yf.download(ticker, start='1990-01-01', end=datetime.now().strftime('%Y-%m-%d'))
+    stock_data_full = yf.download(ticker, start='2021-01-01', end=datetime.now().strftime('%Y-%m-%d'))
     return stock_data_full[['Close']]
 
 def get_financial_data_prophet(ticker):
     """Scarica i dati storici per un ticker specificato."""
     try:
-        stock_data_prophet = yf.download(ticker, start='1990-01-01', end=datetime.now().strftime('%Y-%m-%d'))
+        stock_data_prophet = yf.download(ticker, start='2021-01-01', end=datetime.now().strftime('%Y-%m-%d'))
         if stock_data_prophet.empty:
             raise ValueError("Dati storici non disponibili per il ticker fornito.")
         stock_data_prophet.reset_index(inplace=True)
