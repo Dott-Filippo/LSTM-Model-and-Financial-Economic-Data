@@ -32,8 +32,8 @@ def analizza_fasi(ticker):
     azienda = yf.Ticker(ticker)
     flussi_cassa = azienda.cashflow.T
 
-    flussi_cassa.columns = flussi_cassa.columns.str.strip()
-    #flussi_cassa.columns = flussi_cassa.columns.map(lambda x: str(x).strip())
+    #flussi_cassa.columns = flussi_cassa.columns.str.strip()
+    flussi_cassa.columns = flussi_cassa.columns.map(lambda x: str(x).strip())
     try:
         flussi_cassa = flussi_cassa[['Operating Cash Flow', 'Investing Cash Flow', 'Financing Cash Flow']]
     except KeyError as e:
